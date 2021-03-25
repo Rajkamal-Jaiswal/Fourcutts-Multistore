@@ -12,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.aaratechnologies.fourcutss.Models.ModelUser;
 import com.aaratechnologies.fourcutss.R;
 import com.aaratechnologies.fourcutss.Utils.SharedPreferenceUser;
+import com.aaratechnologies.fourcutss.Utils.Util.M;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -25,7 +29,17 @@ public class SplashScreen extends AppCompatActivity {
 
         ModelUser modelUser = SharedPreferenceUser.getInstance(getApplicationContext()).getUser();
 
-        Log.d("TAG", "onCreate: 0"+modelUser.getMobile());
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(SplashScreen.this, new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String newToken = instanceIdResult.getToken();
+                Log.d("newToken", "Toaken is:   " + newToken);
+                M.setToken(newToken, getApplicationContext());
+
+
+            }
+        });
+        Log.d("TAG", "onCreate: 0" + modelUser.getMobile());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -42,5 +56,4 @@ public class SplashScreen extends AppCompatActivity {
             }
         }, 1500);
     }
-
 }

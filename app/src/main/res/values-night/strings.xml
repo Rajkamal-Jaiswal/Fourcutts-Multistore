@@ -4,4 +4,6 @@
     <string name="err_msg_network">Network Issue</string>
     <string name="alert">Alert !</string>
     <string name="dummydata">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero\'s De Finibus Bonorum et Malorum for use in a type specimen book.Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero\'s De Finibus Bonorum et Malorum for use in a type specimen book.</string>
+    <string name="fcm_message">"Fourcutss "</string>
+    <string name="google_maps_key">AIzaSyDwiLf7G1dR_ZskhWU1Rb9siTFOBoSrPmA</string>
 </resources>
