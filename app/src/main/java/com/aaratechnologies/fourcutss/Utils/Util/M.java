@@ -53,7 +53,7 @@ public class M {
     public static boolean setCartCount(String count, Context mContext) {
         mSharedPreferences = mContext.getSharedPreferences(pref_name, 0);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        int a=Integer.parseInt(count);
+        int a = Integer.parseInt(count);
         editor.putString("cartCount", String.valueOf(a));
         return editor.commit();
     }
@@ -61,7 +61,7 @@ public class M {
     public static boolean setCartCountUpdate(String count, Context mContext) {
         mSharedPreferences = mContext.getSharedPreferences(pref_name, 0);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        int a=Integer.parseInt(count);
+        int a = Integer.parseInt(count);
         editor.putString("cartCount", String.valueOf(a));
         return editor.commit();
     }
@@ -427,4 +427,17 @@ public class M {
         mSharedPreferences = mContext.getSharedPreferences(pref_name, 0);
         return mSharedPreferences.getString("userid", "");
     }
+
+    public static boolean setToken(String newToken, Context mContext) {
+        mSharedPreferences = mContext.getSharedPreferences(pref_name, 0);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString("device_token", newToken);
+        return editor.commit();
+    }
+
+    public static String getToken(Context mContext) {
+        mSharedPreferences = mContext.getSharedPreferences(pref_name, 0);
+        return mSharedPreferences.getString("device_token", "");
+    }
+
 }

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "294773596001",
+    "project_id": "sharegrapes",
+    "storage_bucket": "sharegrapes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294773596001:android:ce28311c72b5f3351aef20",
+        "android_client_info": {
+          "package_name": "com.aaratechnologies.fourcutss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294773596001-epcagf8lv77romfhvlgbi94jpk3sph3t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD5OiqRDxvLFzGjurfUgkq_I6lxDd1uew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294773596001-epcagf8lv77romfhvlgbi94jpk3sph3t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294773596001:android:228a0d83619f73b91aef20",
+        "android_client_info": {
+          "package_name": "com.aaratechnologies.sharegrapes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294773596001-epcagf8lv77romfhvlgbi94jpk3sph3t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD5OiqRDxvLFzGjurfUgkq_I6lxDd1uew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294773596001-epcagf8lv77romfhvlgbi94jpk3sph3t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
