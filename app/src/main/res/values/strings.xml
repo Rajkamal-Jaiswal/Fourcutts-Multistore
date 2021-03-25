@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Four Cutss</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="login_string">Please enter your mobile number to proceed</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_delivery_slot">DeliverySlot</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="intro_title">"Quickly search and add healthy foods to your cart "</string>
+    <string name="please_wait">Please wait</string>
+    <string name="failed">No record found</string>
+    <string name="err_msg_network">Network Issue</string>
+    <string name="alert">Alert !</string>
+    <string name="dummydata">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of .</string>
+</resources>

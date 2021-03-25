@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="24dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="230dp">
+
+        <LinearLayout
+            android:id="@+id/l1"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:scaleType="fitCenter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/chicken_biryani" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ttl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/l1"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toLeftOf="@id/imageView"
+            android:text="Chicken Biryani"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/rl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ttl1"
+            android:layout_margin="4dp"
+
+            android:layout_toLeftOf="@id/imageView">
+
+            <ImageView
+                android:id="@+id/star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="2dp"
+                android:src="@drawable/ic_baseline_star_purple500_24"
+                app:tint="@color/yellow_800" />
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@id/star"
+                android:text="4.5"
+                android:textSize="12sp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_below="@id/rl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/imageView"
+            android:layout_alignParentLeft="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_10"
+                android:text="30% Off"
+                android:padding="3dp"
+                android:textColor="@color/green_900"
+                android:textSize="@dimen/padding_10" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/imageView"
+            android:layout_width="70dp"
+            android:layout_height="61dp"
+            android:layout_below="@id/l1"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="19dp"
+            android:layout_marginRight="0dp"
+            android:alpha=".8"
+            android:background="@drawable/product_rate_bg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif-black"
+                android:text="570 "
+                android:textSize="20sp"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
