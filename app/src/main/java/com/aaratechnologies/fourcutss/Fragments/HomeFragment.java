@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aaratechnologies.fourcutss.Activities.Product_Description_Activity;
+import com.aaratechnologies.fourcutss.Adapters.AdapterCategory;
 import com.aaratechnologies.fourcutss.Adapters.BlogsAdapter;
+import com.aaratechnologies.fourcutss.Adapters.CategoriesAdapter;
 import com.aaratechnologies.fourcutss.Adapters.OffersAdapter;
 import com.aaratechnologies.fourcutss.Adapters.ShopCategory;
 import com.aaratechnologies.fourcutss.Adapters.SliderAdapter;
@@ -34,7 +36,7 @@ public class HomeFragment extends Fragment implements categoryOnClick, ShopCateg
 
     private ShimmerFrameLayout mShimmerViewContainer;
     LinearLayout text;
-    RecyclerView shop_cat_recyc, offers_recyc, blog_recyc;
+    RecyclerView shop_cat_recyc, offers_recyc, blog_recyc,shop_cat_recyc1;
     TextView see_more;
     RelativeLayout toolbar;
 
@@ -70,12 +72,18 @@ public class HomeFragment extends Fragment implements categoryOnClick, ShopCateg
 //        recyclerView.setNestedScrollingEnabled(false);
         see_more = view.findViewById(R.id.see_more);
         shop_cat_recyc = view.findViewById(R.id.shop_cat_recyc);
+
         shop_cat_recyc.setNestedScrollingEnabled(false);
         offers_recyc = view.findViewById(R.id.offers_recyc);
         offers_recyc.setNestedScrollingEnabled(false);
         blog_recyc = view.findViewById(R.id.blog_recyc);
         blog_recyc.setNestedScrollingEnabled(false);
         sliderView = view.findViewById(R.id.image_slider);
+        shop_cat_recyc1 = view.findViewById(R.id.shop_cat_recyc1);
+        shop_cat_recyc1.setNestedScrollingEnabled(false);
+
+        shop_cat_recyc1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        shop_cat_recyc1.setAdapter(new ShopCategory(getContext(),this));
 
         SliderAdapter sliderAdapter = new SliderAdapter(img, getContext());
         sliderView.setSliderAdapter(sliderAdapter);
@@ -85,8 +93,8 @@ public class HomeFragment extends Fragment implements categoryOnClick, ShopCateg
         sliderView.startAutoCycle();
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 //        recyclerView.setAdapter(new CategoryAdapter(getContext(), this));
-        shop_cat_recyc.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        shop_cat_recyc.setAdapter(new ShopCategory(getContext(), this));
+        shop_cat_recyc.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        shop_cat_recyc.setAdapter(new AdapterCategory(getContext()));
         offers_recyc.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false));
         offers_recyc.setAdapter(new OffersAdapter(getContext(), this));
         blog_recyc.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));

@@ -1,36 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    app:cardElevation="5dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    app:cardCornerRadius="10dp"
-    android:layout_margin="10dp"
-    android:layout_height="wrap_content">
+    android:gravity="center"
+    android:orientation="vertical"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
+    <ImageView
         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/biryani_8" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="78dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/non_veg" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="Eggs"
+        android:textColor="@color/fourcuts" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="cat_name"
-            android:gravity="center"
-            android:textColor="@color/fourcuts"
-            />
+</LinearLayout>
 
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
