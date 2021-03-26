@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@drawable/icon_delete"
+            android:background="@drawable/ic_baseline_delete_24"
             android:padding="@dimen/padding_10" />
 
         <TextView
@@ -45,7 +45,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ttl"
-
             android:paddingLeft="@dimen/padding_10"
             android:text="colour: Red | Item #1234"
             android:textSize="12sp" />
@@ -78,7 +77,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="-7dp"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:src="@drawable/ic_baseline_minimize_24" />
 
             <TextView
@@ -87,9 +86,8 @@
                 android:layout_gravity="center"
                 android:layout_toLeftOf="@id/plus"
                 android:layout_toRightOf="@id/minus"
-                android:padding="@dimen/padding_10"
+                android:padding="8dp"
                 android:text="4"
-
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -101,7 +99,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="4dp"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:src="@drawable/ic_baseline_add_24" />
 
 

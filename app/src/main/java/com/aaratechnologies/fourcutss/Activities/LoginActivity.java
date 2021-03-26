@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
-    String mobile = "9118919678", token = "dxfdhxvcfdvxachcvhea";
+    String mobile = "", token = "";
     EditText phone;
 
     @Override
@@ -44,19 +44,10 @@ public class LoginActivity extends AppCompatActivity {
                                     String s = jsonObject1.getString("data");
                                     Intent intent = new Intent(getApplicationContext(), LoginOTP.class);
                                     intent.putExtra("data",s);
+                                    intent.putExtra("mobileNo",mobile);
                                     startActivity(intent);
                                     finish();
                                 }
-
-//                        LoginResponse logindata = (LoginResponse) object;
-//                        String LoginRole = logindata.getLoginRes().get(0).getLoginRole();
-////                        Toast.makeText(Login.this, ""+logindata.getLoginRes().get(0).getLoginRole(), Toast.LENGTH_SHORT).show();
-//                        String UserName = logindata.getLoginRes().get(0).getUsername();
-//                        Toast.makeText(Login.this, ""+logindata.getLoginRes().get(0).getUsername(), Toast.LENGTH_SHORT).show();
-//                        String Password = logindata.getLoginRes().get(0).getPassword();
-//                        ModelLogin modelLogin = new ModelLogin(LoginRole, Password, UserName);
-//                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(modelLogin);
-//
                             }
 
                             @Override
@@ -69,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void GOTODashboard(View view) {
         mobile = phone.getText().toString().trim();
+        token=M.getToken(LoginActivity.this);
         if (mobile.isEmpty()) {
             Toast.makeText(this, "Mobile number can't be Empty", Toast.LENGTH_SHORT).show();
             phone.requestFocus();
@@ -76,9 +68,4 @@ public class LoginActivity extends AppCompatActivity {
         }
         hitApi(mobile, token);
     }
-
-
-//    private void requestFocus(EditText phone, String empty) {
-//
-//    }
 }

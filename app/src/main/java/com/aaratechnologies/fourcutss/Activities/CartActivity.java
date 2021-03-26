@@ -18,8 +18,6 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 public class CartActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    //    BottomAppBar continue_btn;
-//    Toolbar toolbar_main;
     RelativeLayout text;
     private ShimmerFrameLayout mShimmerViewContainer;
     FrameLayout frameLayout;
@@ -28,7 +26,6 @@ public class CartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-        Toolbar();
         mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
         text = findViewById(R.id.text);
         text.setVisibility(View.GONE);
@@ -47,20 +44,6 @@ public class CartActivity extends AppCompatActivity {
         }, 1500);
 
         recyclerView = findViewById(R.id.recycler_cart);
-//        continue_btn = view.findViewById(R.id.continue_btn);
-//        toolbar_main = getActivity().findViewById(R.id.toolbar_main);
-//        toolbar_main.setTitle("Cart");
-//        toolbar_main.setTitleTextColor(Color.WHITE);
-
-
-//        continue_btn.setOnClickListener( v ->
-//                getActivity()
-//                        .getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .addToBackStack("cart")
-//                        .replace(R.id.fragment_container,new DeliverySummary())
-//                        .commit()
-//        );
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(new CartItemsAdapter(getApplicationContext()));
       

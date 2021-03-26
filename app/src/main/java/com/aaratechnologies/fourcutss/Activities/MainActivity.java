@@ -148,35 +148,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-//    @Override
-//    public void onBackPressed() {0
-
-//        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
-//            final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-//            builder.setTitle(R.string.app_name);
-//            builder.setIcon(R.drawable.ic_baseline_exit_to_app_24);
-//            builder.setMessage("Do You Want To Exit?");
-//            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    if (drawer.isDrawerVisible(GravityCompat.START)) {
-//                        drawer.closeDrawer(GravityCompat.START);
-//                    } else drawer.openDrawer(GravityCompat.START);
-//                    finish();
-//                }
-//            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    //DND
-//                    dialogInterface.dismiss();
-//                }
-//            });
-//            AlertDialog alertDialog = builder.create();
-//            alertDialog.show();
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
 
 
     boolean doubleBackToExitPressedOnce = false;
@@ -187,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
             return;
         }
-
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Please press BACK again to exit", Toast.LENGTH_SHORT).show();
 

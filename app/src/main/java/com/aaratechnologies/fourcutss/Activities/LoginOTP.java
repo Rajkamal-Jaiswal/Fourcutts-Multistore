@@ -2,10 +2,13 @@ package com.aaratechnologies.fourcutss.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,7 @@ import com.aaratechnologies.fourcutss.R;
 import com.aaratechnologies.fourcutss.Utils.SharedPreferenceUser;
 import com.aaratechnologies.fourcutss.Utils.Util.M;
 import com.aaratechnologies.fourcutss.Utils.UtilMethods;
+import com.goodiebag.pinview.Pinview;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,34 +26,67 @@ import org.json.JSONObject;
 
 public class LoginOTP extends AppCompatActivity {
 
-    EditText otp_field;
-    String data;
+    Pinview otp_field;
+    String data,mobileNo="";
     Button verify;
+    TextView txt_timer;
+    RelativeLayout relative_ResendOtp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_o_t_p);
         otp_field = findViewById(R.id.otp_field);
-        verify = findViewById(R.id.verify);
+        verify = findViewById(R.id.btn_verify);
+        txt_timer = findViewById(R.id.txt_timer);
+        relative_ResendOtp = findViewById(R.id.relative_ResendOtp);
+
+        data = getIntent().getStringExtra("data");
+        mobileNo=getIntent().getStringExtra("mobileNo");
+
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (otp_field.getText().toString().isEmpty()) {
-                    otp_field.setError("Empty");
-                    otp_field.requestFocus();
-                    return;
+                if (otp_field.getValue().toString().isEmpty()) {
+                    Toast.makeText(LoginOTP.this, "Enter OTP", Toast.LENGTH_SHORT).show();
                 }
-                hitApi(otp_field.getText().toString().trim());
+                hitApi(otp_field.getValue().trim());
             }
         });
-        data = getIntent().getStringExtra("data");
+
+        getCountDownTimer();
+
+        relative_ResendOtp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mobileNo.isEmpty()|| mobileNo.equals("")) {
+                    Toast.makeText(LoginOTP.this, "Mobile number can't be Empty", Toast.LENGTH_SHORT).show();
+                }
+                resendOtp(mobileNo, M.getToken(LoginOTP.this));
+            }
+        });
     }
 
-    private void hitApi(String trim) {
+    private void getCountDownTimer() {
+        new CountDownTimer(30000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                txt_timer.setText(millisUntilFinished / 1000+"Seconds");
+                txt_timer.setVisibility(View.VISIBLE);
+                verify.setVisibility(View.VISIBLE);
+                relative_ResendOtp.setVisibility(View.GONE);
+            }
+            public void onFinish() {
+                relative_ResendOtp.setVisibility(View.VISIBLE);
+                txt_timer.setVisibility(View.GONE);
+                verify.setVisibility(View.GONE);
+            }
+        }.start();
+    }
+
+    private void resendOtp(String mobileNo, String token) {
         M.showLoadingDialog(LoginOTP.this);
         UtilMethods.
-                SubmitOtpService(LoginOTP.this, data, trim, "dxfdhxvcfdvxachcvhea",
+                LoginService(LoginOTP.this, mobileNo, M.getToken(LoginOTP.this),
                         new UtilMethods.ApiCallBackTwoMethod() {
                             @Override
                             public void onSucess(Object object) throws JSONException {
@@ -58,7 +95,30 @@ public class LoginOTP extends AppCompatActivity {
                                 JSONObject jsonObject = new JSONObject(String.valueOf(object));
                                 if (jsonObject.getInt("response_code") == 200) {
                                     JSONObject jsonObject1 = jsonObject.getJSONObject("response_data");
-//
+                                    String s = jsonObject1.getString("data");
+                                    getCountDownTimer();
+                                }
+                            }
+
+                            @Override
+                            public void onError(String errorMsg) {
+                                M.hideLoadingDialog();
+                                Toast.makeText(LoginOTP.this, "" + errorMsg, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+    }
+
+    private void hitApi(String trim) {
+        M.showLoadingDialog(LoginOTP.this);
+        UtilMethods.SubmitOtpService(LoginOTP.this, data, trim, M.getToken(LoginOTP.this),
+                        new UtilMethods.ApiCallBackTwoMethod() {
+                            @Override
+                            public void onSucess(Object object) throws JSONException {
+                                M.hideLoadingDialog();
+                                Log.d("TAG", "onSucess: " + object);
+                                JSONObject jsonObject = new JSONObject(String.valueOf(object));
+                                if (jsonObject.getInt("response_code") == 200) {
+                                    JSONObject jsonObject1 = jsonObject.getJSONObject("response_data");
                                     JSONArray jsonArray = jsonObject1.getJSONArray("data");
                                     if (jsonArray.length() > 0) {
                                         JSONObject jsonObject2 = jsonArray.getJSONObject(0);
@@ -93,29 +153,14 @@ public class LoginOTP extends AppCompatActivity {
                                         String device_token = jsonObject2.getString("device_token");
                                         SharedPreferenceUser.getInstance(LoginOTP.this).userLogin(new ModelUser(user_id, user_auth_id, username, email, mobile, meta_values, status, created_by, created_at, image, address, latitude, langitude, city, zip, state, country, user_base_id, otp, email_token, otp_verified, email_verified, session_key, auth_key, password, login_time, logout_time, is_login, device_token));
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                                    intent.putExtra("data",s);
                                         startActivity(intent);
                                         finish();
                                     }
-//                                    String s = jsonObject.getString("data");
-
-//                                    SharedPrefManager.getInstance(getApplicationContext()).userLogin(modelLogin);
 
                                 }else {
                                     Toast.makeText(LoginOTP.this, "", Toast.LENGTH_SHORT).show();
                                 }
-
-//                        LoginResponse logindata = (LoginResponse) object;
-//                        String LoginRole = logindata.getLoginRes().get(0).getLoginRole();
-////                        Toast.makeText(Login.this, ""+logindata.getLoginRes().get(0).getLoginRole(), Toast.LENGTH_SHORT).show();
-//                        String UserName = logindata.getLoginRes().get(0).getUsername();
-//                        Toast.makeText(Login.this, ""+logindata.getLoginRes().get(0).getUsername(), Toast.LENGTH_SHORT).show();
-//                        String Password = logindata.getLoginRes().get(0).getPassword();
-//                        ModelLogin modelLogin = new ModelLogin(LoginRole, Password, UserName);
-//                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(modelLogin);
-//
                             }
-
                             @Override
                             public void onError(String errorMsg) {
                                 M.hideLoadingDialog();

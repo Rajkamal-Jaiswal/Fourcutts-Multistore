@@ -44,25 +44,24 @@
                 android:textSize="20dp"
                 android:textStyle="normal" />
 
-
-            <EditText
+            <com.goodiebag.pinview.Pinview
                 android:id="@+id/otp_field"
+                app:pinBackground="@drawable/bg_back1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:pinWidth="40dp"
+                app:pinHeight="40dp"
+                app:pinLength="4"
+                app:cursorVisible="true"
+                app:forceKeyboard="false"
+                app:hint="0"
+                app:inputType="number"
+                app:password="false"
                 android:layout_below="@id/wel"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="35dp"
-                android:layout_marginRight="25dp"
-                android:alpha=".8"
-                android:hint="Enter OTP"
-                android:background="@drawable/bg_back1"
-                android:fontFamily="sans-serif"
-                android:padding="14sp"
-                android:textColorHint="@color/black" />
-
+                android:layout_marginLeft="25dp"/>
 
             <Button
-                android:id="@+id/verify"
+                android:id="@+id/btn_verify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/otp_field"
@@ -77,7 +76,7 @@
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/timer"
+                android:id="@+id/txt_timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/otp_field"
@@ -102,7 +101,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="50dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:id="@+id/relative_ResendOtp"
+            android:visibility="gone">
 
 
             <ImageView
@@ -111,7 +112,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/resend_otp_btn"
                 android:src="@drawable/ic_baseline_loop_24"
-                app:tint="@color/white" />
+                app:tint="@color/white"/>
 
             <TextView
                 android:id="@+id/resend_otp_btn"

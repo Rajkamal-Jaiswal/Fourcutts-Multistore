@@ -31,7 +31,6 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.item
 
     @Override
     public void onBindViewHolder(@NonNull itemHolder holder, int position) {
-
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,12 +59,11 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.item
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 1;
     }
 
     public class itemHolder extends RecyclerView.ViewHolder {
         ImageButton delete;
-
         public itemHolder(@NonNull View itemView) {
             super(itemView);
             delete = itemView.findViewById(R.id.delete);
